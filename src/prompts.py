@@ -1,10 +1,11 @@
 from gpt4all import GPT4All
 
-model = GPT4All("orca-mini-3b-gguf2-q4_0.gguf")
+model = GPT4All("mistral-7b-instruct-v0.1.Q4_0.gguf")
 
 
-def get_random_word():
-    random_word = model.generate(prompt="give me a word")
-    print("rando")
-    print(random_word)
-    return random_word
+def get_translated_word(word: str, language: str):
+    return model.generate(
+        f"""
+        [INST]provide the translation of "{word}" to {language}[/INST]
+        """
+    )
