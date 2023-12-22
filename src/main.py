@@ -2,6 +2,7 @@ from graphics import CJK_ASCII_ART, print_line
 
 
 def print_welcome_message():
+    """Prints the welcome message when CJK is first opened."""
     print_line(thick=True)
     print(CJK_ASCII_ART)
     print_line(thick=True)
