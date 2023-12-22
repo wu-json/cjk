@@ -11,8 +11,8 @@ class CjkProgram:
         self.state = CjkProgramState.SelectOption.value
 
     def start(self):
-        if self.state == CjkProgramState.SelectOption.value:
-            while True:
+        while True:
+            if self.state == CjkProgramState.SelectOption.value:
                 questions = [
                     inquirer.List(
                         "action",
