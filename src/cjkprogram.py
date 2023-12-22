@@ -13,17 +13,18 @@ class CjkProgram:
     def start(self):
         while True:
             if self.state == CjkProgramState.SelectOption.value:
-                questions = [
-                    inquirer.List(
-                        "action",
-                        message="What do you want to do?",
-                        choices=["Learn random word", "Quit"],
-                    )
-                ]
-                answers = inquirer.prompt(questions)
+                answers = inquirer.prompt(
+                    [
+                        inquirer.List(
+                            "action",
+                            message="What do you want to do?",
+                            choices=["Translate word", "Quit"],
+                        )
+                    ]
+                )
                 if answers is None:
                     break
-                elif answers["action"] == "Learn random word":
-                    print("hello")
+                elif answers["action"] == "Translate word":
+                    print("would have translated word here")
                 elif answers["action"] == "Quit":
                     break
