@@ -1,10 +1,18 @@
-from gpt4all import GPT4All
+from graphics import CJK_ASCII_ART, print_line
+
+
+def print_welcome_message():
+    print_line(thick=True)
+    print(CJK_ASCII_ART)
+    print_line(thick=True)
+    print(
+        "Welcome to CJK! This is an LLM-powered command line tool for learning words in 中文,日本語、and 한국어 all at once!"
+    )
+    print_line()
 
 
 def main():
-    model = GPT4All("orca-mini-3b-gguf2-q4_0.gguf")
-    output = model.generate("Who is Ichigo Kurosaki", max_tokens=30)
-    print(output)
+    print_welcome_message()
 
 
 if __name__ == "__main__":
