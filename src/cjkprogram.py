@@ -17,13 +17,13 @@ class CjkProgram:
                     inquirer.List(
                         "action",
                         message="What do you want to do?",
-                        choices=["Random word", "Quit"],
+                        choices=["Learn random word", "Quit"],
                     )
                 ]
                 answers = inquirer.prompt(questions)
                 if answers is None:
                     break
-                elif answers["action"] == "Random word":
+                elif answers["action"] == "Learn random word":
                     print("hello")
                 elif answers["action"] == "Quit":
                     break
