@@ -1,4 +1,7 @@
+from config import LANGUAGES
 from enum import Enum
+from graphics import print_line
+from multiprocessing import Pool
 from prompts import get_translated_word
 import inquirer
 
@@ -42,7 +45,15 @@ class CjkProgram:
                 if answers is None:
                     break
                 else:
-                    translation = get_translated_word(answers["word"], "japanese")
-                    print(translation)
+                    word = answers["word"]
+
+                    def get_translation(lang: str):
+                        return get_translated_word(word, lang)
+
+                    pool = Pool(processes=3)
+                    res = pool.map(get_translation, LANGUAGES)
+
+                    print(res)
+
                     print("end")
                     self.state = CjkProgramState.SelectAction.value
