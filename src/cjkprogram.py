@@ -3,7 +3,6 @@ from enum import Enum
 from graphics import print_line
 from prompts import get_translated_word
 from yaspin import yaspin
-from yaspin.spinners import Spinners
 import inquirer
 
 
