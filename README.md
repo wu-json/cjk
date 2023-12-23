@@ -1,4 +1,4 @@
-# cjk
+# cjk 🇨🇳 🇯🇵 🇰🇷
 
 Python tool for learning new vocabulary in Chinese, Japanese, and Korean.
 
@@ -21,6 +21,8 @@ I needed and got a simple refresher on Python. :)
 Once you run the app locally (instructions below) you will be prompted to enter a word to translate to the languages
 of interest. From there, a prompt will run for each against the selected model, and you will see the translation as
 well as an example sentence directly in your terminal.
+
+![Screenshot 2023-12-23 at 11 00 54 AM](https://github.com/wu-json/cjk/assets/45532884/c7f68713-1cc9-4e7a-8b76-adb8401a0a19)
 
 ## Development
 
