@@ -6,6 +6,6 @@ model = GPT4All("mistral-7b-instruct-v0.1.Q4_0.gguf")
 def get_translated_word(word: str, language: str):
     return model.generate(
         f"""
-        [INST]translate "{word}" to {language}. use the word in an example sentence in {language}.[/INST]
+        [INST]translate "{word}" to {language}, and give an example sentence using "{word}" in {language}.[/INST]
         """
     )

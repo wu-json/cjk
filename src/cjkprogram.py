@@ -1,8 +1,9 @@
-from config import LANGUAGES
+from config import LANGUAGES, FLAGS
 from enum import Enum
 from graphics import print_line
-from multiprocessing import Pool
 from prompts import get_translated_word
+from yaspin import yaspin
+from yaspin.spinners import Spinners
 import inquirer
 
 
@@ -46,14 +47,18 @@ class CjkProgram:
                     break
                 else:
                     word = answers["word"]
+                    translations = []
+                    for lang in LANGUAGES:
+                        with yaspin(
+                            text=f"translating word to {lang}", color="green"
+                        ) as spinner:
+                            translation = get_translated_word(word, lang)
+                            translations.append(translation)
+                            success_emoji = (
+                                FLAGS[lang] if FLAGS[lang] is not None else "✅"
+                            )
+                            spinner.ok(success_emoji)
 
-                    def get_translation(lang: str):
-                        return get_translated_word(word, lang)
-
-                    pool = Pool(processes=3)
-                    res = pool.map(get_translation, LANGUAGES)
-
-                    print(res)
-
+                    print(translations)
                     print("end")
                     self.state = CjkProgramState.SelectAction.value
