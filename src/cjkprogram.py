@@ -47,10 +47,13 @@ class CjkProgram:
                     break
                 else:
                     word = answers["word"]
+                    print_line(thick=True)
+                    print(word)
+                    print_line()
                     translations = []
                     for lang in LANGUAGES:
                         with yaspin(
-                            text=f"translating word to {lang}", color="green"
+                            text=f'translating "{word}" to {lang}', color="green"
                         ) as spinner:
                             translation = get_translated_word(word, lang)
                             translations.append(translation)
@@ -59,6 +62,12 @@ class CjkProgram:
                             )
                             spinner.ok(success_emoji)
 
-                    print(translations)
-                    print("end")
+                    for i, lang in enumerate(LANGUAGES):
+                        print_line()
+                        emoji = FLAGS[lang] if FLAGS[lang] is not None else "✅"
+                        print(f"{lang} {emoji}")
+                        print(translations[i])
+
+                    print_line()
+
                     self.state = CjkProgramState.SelectAction.value
